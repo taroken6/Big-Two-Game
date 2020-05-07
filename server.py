@@ -98,10 +98,10 @@ def threaded_client(conn):
                             room = game_ID[key]
                             if room.start:
                                 room = "In-progress"
-                            elif room.full_lobby():
+                            elif room.is_full_lobby():
                                 room = "Full"
                             else:
-                                player_num = room.make_player()
+                                player_num = room.enter_player()
                         else:
                             room = "Empty"
                         conn.sendall(pickle.dumps((room, player_num)))

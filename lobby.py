@@ -1,14 +1,18 @@
 class Lobby:
     def __init__(self, number, name, password):
-        self.number = number
-        self.name = name
+        self.lobby_number = number
+        self.lobby_name = name
         self.password = password
-        self.host = 0
+        self.host = 0  # Index of host player within 'players' list
         self.players = [self.host]
         self.ready = [True, False, False, False]
         self.start = False
 
-    def full_lobby(self):
+    def is_full_lobby(self):
+        """
+        Returns boolean whether the lobby is full
+        :return: True | False
+        """
         if len(self.players) < 4:
             return False
         else:
@@ -16,78 +20,95 @@ class Lobby:
                 return True
 
     def is_pass_protected(self):
+        """
+        Returns whether the lobby is password protected
+        :return: True | False
+        """
         if self.password != '':
             return True
         else:
             return False
 
     def ready_player(self, player_num):
+        """
+        Readies the given player
+        :param player_num: Player number within the lobby
+        :return: True | False
+        """
         if not self.ready[player_num]:
             self.ready[player_num] = True
         else:
             self.ready[player_num] = False
 
-    def remove_player(self, player):
-        if player == self.host:
-            for player_num in self.players:
-                if player_num != self.host and player_num is not None:
-                    self.host = player_num
+    def remove_player(self, player_num):
+        """
+        Remove the given player from lobby
+        If the removed player was the host, the player number closest to '0' becomes host
+        :param player_num:
+        :return:
+        """
+        if player_num == self.host:
+            for player in self.players:
+                if player != self.host and player is not None:
+                    self.host = player
                     break
-        self.players[player] = None
-        self.ready[player] = False
-        print(f"Removed player {player}")
+        self.players[player_num] = None
+        self.ready[player_num] = False
 
     def reset_lobby(self):
+        """
+        Called once the game is finished and all players will need to ready up again
+        """
         self.start = False
         self.ready = [False] * 4
 
     def start_game(self):
         players_ready = 0
         if len(self.players) == 1:
-            print("Not enough players!")
             return False
         for player in self.players:
             if player is None:
                 continue
             elif self.ready[player]:
                 players_ready += 1
-        if players_ready == self.get_playing_players():
+        if players_ready == self.get_total_players():
             self.start = True
             return True
 
     def get_name(self):
-        return self.name
+        return self.lobby_name
 
     def get_password(self):
         return self.password
 
     def get_number(self):
-        return self.number
+        return self.lobby_number
 
     def get_host(self):
         return self.host
 
-    def get_playing_players(self):
-        players_playing = 0
+    def get_total_players(self):
+        """
+        :return: Number of players inside the lobby
+        """
+        total_players = 0
         for player in self.players:
             if player is None:
                 continue
             else:
-                players_playing += 1
-        return players_playing
+                total_players += 1
+        return total_players
 
-    def make_player(self):
-        for index, number in enumerate(self.players):
-            if number is None:
-                self.players[index] = index
-                return index
-            elif index != number:
-                self.players.append(index)
-                return index
-            elif index + 1 == len(self.players):
-                self.players.append(index + 1)
-                return index + 1
-            elif index == number:
+    def enter_player(self):
+        """
+        If there's an 'None' slot in list of players, insert player into that player into the slot
+        :return: The player's number
+        """
+        for player_num, player in enumerate(self.players):
+            if player is None:
+                self.players[player_num] = player_num
+                return player_num
+            elif player_num == player:
                 continue
             else:
                 print("Error in making player")

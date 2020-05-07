@@ -11,12 +11,12 @@ class Deck:
             for rank in Card.RANKS:
                 self.deck.append(Card(rank, suit))
 
-    def __repr__(self):
+    def __repr__(self):  # TODO This should probably be its own method since we return nothing
         card_index = 0
         for card in self.deck:
             print(f'{card_index}: {card}')
             card_index += 1
-        return ''
+        return ""
 
     def show(self):
         for card in self.deck:

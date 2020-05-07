@@ -1,6 +1,6 @@
 class Card:
     RANKS = (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
-    SUITS = ('Club', 'Diamond', 'Heart', 'Spade')
+    SUITS = ("Club", "Diamond", "Heart", "Spade")
 
     def __init__(self, rank, suit):
         self.suit = suit
@@ -20,12 +20,12 @@ class Card:
         else:
             rank = self.rank
 
-        return ("{} of {}s".format(rank, self.suit))
+        return "{} of {}s".format(rank, self.suit)
 
     def __eq__(self, other):
-        if not isinstance(other, Card): #Don't attempt if not same type
+        if not isinstance(other, Card):  # Don't attempt if not same type
             return NotImplemented
-        return (self.suit == other.suit and self.rank == other.rank)
+        return self.suit == other.suit and self.rank == other.rank
 
     def __hash__(self):
         return hash(str(self))

@@ -26,7 +26,7 @@ yellow = (255,255,123)
 w, h = pygame.display.get_surface().get_size()
 
 clock = pygame.time.Clock()
-n = None
+n = None  # 'network' object
 
 card_dict = {}
 
@@ -712,9 +712,6 @@ def server_menu():  # Get a list of all available rooms by connecting to network
         n.disconnect()
         return False
 
-    print(lobby.__sizeof__())
-    print(f"There are {len(lobby)} rooms in the lobby")
-
     join_buttons = []
     page = 0
     rpp = next_button.rect.top // ((height // 10) + 20)  # Rooms per page
@@ -765,12 +762,11 @@ def server_menu():  # Get a list of all available rooms by connecting to network
                                 continue
                         print(f"Joining room {key}... \'{lobby[key].get_name()}\'")
                         room, player_num = n.send_object((key, 'join'))
-                        if room in ["Failure", "In-progress", "Empty"]:
+                        if room in ["Full", "In-progress", "Empty"]:
                             print(f"Game is {room}! Refreshing...")
                             lobby = dict(n.send_object("get"))
                             continue
                         pygame.time.wait(500)
-                        # button.darken_button()  # This button won't darken
                         join_lobby(player_num, room)
                         lobby = dict(n.send_object("get"))
             if event.type == pygame.MOUSEBUTTONUP:
@@ -904,9 +900,6 @@ def main_menu():
 
 while True:
     main_menu()
-    log_file = open('log.txt', 'w')
-    log_file.write("Client has closed successfully \n")
-    log_file.close()
     print("Written to log file!")
     pygame.quit()
     break
