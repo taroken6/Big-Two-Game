@@ -6,7 +6,7 @@ class Lobby:
         self.host = 0  # Index of host player within 'players' list
         self.players = [self.host]
         self.ready = [True, False, False, False]
-        self.start = False
+        self.in_progress = False
 
     def is_full_lobby(self):
         """
@@ -59,7 +59,7 @@ class Lobby:
         """
         Called once the game is finished and all players will need to ready up again
         """
-        self.start = False
+        self.in_progress = False
         self.ready = [False] * 4
 
     def start_game(self):
@@ -72,7 +72,7 @@ class Lobby:
             elif self.ready[player]:
                 players_ready += 1
         if players_ready == self.get_total_players():
-            self.start = True
+            self.in_progress = True
             return True
 
     def get_name(self):
@@ -108,6 +108,9 @@ class Lobby:
             if player is None:
                 self.players[player_num] = player_num
                 return player_num
+            elif player_num + 1 == len(self.players):  # Called when len(self.players) <= 3
+                self.players.append(player_num + 1)
+                return player_num + 1
             elif player_num == player:
                 continue
             else:

@@ -30,9 +30,6 @@ class Card:
     def __hash__(self):
         return hash(str(self))
 
-    def show_card(self):
-        print("{} of {}s".format(self.rank, self.suit))
-
     def get_rank(self):
         return self.rank
 

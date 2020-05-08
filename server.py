@@ -32,6 +32,7 @@ def setup_game(room, game):
     game.shuffle_deck()
     game.deal_cards()
 
+
 def read_data(data):
     bad_char = '[],'
     data = data.translate({ord(c): None for c in bad_char})
@@ -61,8 +62,8 @@ def threaded_client(conn):
                 data = pickle.loads(conn.recv(4096))
 
                 if type(data) is tuple:
-                    if len(data) == 3: # Create a room
-                        if data[2] == 'create':  # If clause doesn't seem needed 'cause no else clause afterwards
+                    if len(data) == 3:  # Create a room
+                        if data[2] == 'create':
                             print(f"Received Tuple: {data[2]}")
                             if len(rooms) == 0:
                                 print("No rooms... Creating first room")
@@ -96,7 +97,7 @@ def threaded_client(conn):
                         player_num = 5
                         if key in game_ID.keys():
                             room = game_ID[key]
-                            if room.start:
+                            if room.in_progress:
                                 room = "In-progress"
                             elif room.is_full_lobby():
                                 room = "Full"
@@ -165,7 +166,7 @@ def threaded_client(conn):
                         print("No data received")
                         break
                     else:
-                        if data[0] == '[':  # Client will verify hand before passing to server
+                        if data[0] == '[':
                             print(f"Data list before is: {data}")
                             data = read_data(data)
                             print(f"Received list data is {data}")
