@@ -180,10 +180,11 @@ def load_images():
     deck = Deck()
     for card in deck.deck:
         text = str(card).split(' of ')
+        card_folder = os.getcwd() + '\\images\\cards\\'
         if text[0].isdigit():
-            file_name = text[0] + text[1][0] + '.png'
+            file_name = card_folder + text[0] + text[1][0] + '.png'
         else:
-            file_name = text[0][0] + text[1][0] + '.png'
+            file_name = card_folder + text[0][0] + text[1][0] + '.png'
         card_dict[card] = file_name
 
 
@@ -195,10 +196,8 @@ def resize_card(file):
     global win_width, win_height
     img_size = pygame.image.load(file).get_rect().size
     if win_width == win_height:
-        print("Window is symmetrical")
         img_size = (int(img_size[0] / (w * 0.0125)), int(img_size[1] / (h * 0.0125)))
     else:
-        print("Window isn't symmetrical")
         img_size = (int(img_size[1] / (h * 0.0125)), int(img_size[1] / (h * 0.0125)))
     image = pygame.image.load(file)
     image = pygame.transform.scale(image, (img_size[0], img_size[1]))
@@ -275,13 +274,14 @@ def play_game(lobby, player_num):
 
     hand = game.players[player_num].hand
 
-    card_size = resize_card('3C.png').get_rect().size
+    card_folder = os.getcwd() + "\\images\\cards\\"
+    card_size = resize_card(card_folder + '3C.png').get_rect().size
     for index, card in enumerate(hand):
         hand[index] = (card, resize_card(card_dict[card]))
     for card in card_dict:
         card_dict[card] = resize_card(card_dict[card])
 
-    card_back = equalize_image('back.png', card_size[0], card_size[1])
+    card_back = equalize_image(card_folder + 'back.png', card_size[0], card_size[1])
     x = x1 = card_size[0]
     y = win_height - card_size[1]
     card_space = int((win_width - x1 * 2) / len(game.players[player_num].hand))

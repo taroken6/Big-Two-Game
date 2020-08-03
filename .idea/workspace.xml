@@ -5,62 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed0c907f-90bc-4001-9285-239892c76f88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/BigTwoTesting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Big-Two.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/10D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/10H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/10S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/5C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/5D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/5H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/5S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9C.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9S.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QC.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/big_two_logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crown.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="444" column="44" selection-start-line="444" selection-start-column="44" selection-end-line="444" selection-end-column="44" />
+            <state relative-caret-position="181">
+              <caret line="198" column="62" selection-start-line="198" selection-start-column="62" selection-end-line="198" selection-end-column="62" />
               <folding>
                 <element signature="e#96#109#0" expanded="true" />
                 <element signature="e#33385#33403#0" />
@@ -498,12 +443,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49755302" visible="true" weight="0.24762908" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49755302" visible="true" weight="0.24762908" />
       <window_info id="Structure" order="1" sideWeight="0.502447" side_tool="true" weight="0.24835165" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32857144" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989011" visible="true" weight="0.32502708" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989011" visible="true" weight="0.32502708" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39761648" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -637,16 +582,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/card_button.py" />
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lobby.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -661,23 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/join_button.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deck.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -685,13 +603,6 @@
             <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/card.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -712,10 +623,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/join_button.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/card.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="94" selection-start-line="13" selection-start-column="94" selection-end-line="13" selection-end-column="94" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="444" column="44" selection-start-line="444" selection-start-column="44" selection-end-line="444" selection-end-column="44" />
+        <state relative-caret-position="181">
+          <caret line="198" column="62" selection-start-line="198" selection-start-column="62" selection-end-line="198" selection-end-column="62" />
           <folding>
             <element signature="e#96#109#0" expanded="true" />
             <element signature="e#33385#33403#0" />
