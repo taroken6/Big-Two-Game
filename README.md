@@ -1,6 +1,6 @@
 # Big-Two-Game
-Start date: July 19, 2019
-
+Start date: July 19, 2019  
+Demo: https://youtu.be/6kYC5o82Tfw  
 This is an online game based off the Big Two card game where 2-4 people play against each other with poker hands.
 
 ## Getting Started
