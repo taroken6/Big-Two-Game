@@ -10,14 +10,16 @@ from card_button import CardButton
 from join_button import JoinButton
 import pygame.gfxdraw
 
-window_width = 800
-window_height = 800
-window = pygame.display.set_mode((window_width, window_height))
+import os
+
+win_width = 800
+win_height = 800
+window = pygame.display.set_mode((win_width, win_height))
 pygame.display.set_caption("Big Two")
 pygame.font.init()
 
-btn_w = window_width // 5
-btn_h = window_height // 8
+btn_w = win_width // 5
+btn_h = win_height // 8
 w, h = pygame.display.get_surface().get_size()
 clock = pygame.time.Clock()
 n = None  # 'network' object
@@ -29,6 +31,9 @@ green = (0, 150, 55)
 black = (0, 0, 0)
 blue = (0, 0, 180)
 yellow = (255, 255, 123)
+
+logo_file = os.getcwd() + "\\images\\big_two_logo.png"
+crown_file = os.getcwd() + "\\images\\crown.png"
 
 
 def disconnect(n):
@@ -101,11 +106,11 @@ def verify_hand(hand, hand_type, game):
 
 
 def draw_hand_played(game, card_size):
-    global window_width
-    global window_height
+    global win_width
+    global win_height
     center_space = len(game.hand_played) * card_size[0]
-    center_x = window_width / 2 - center_space / 2
-    center_y = window_height / 2 - card_size[1] / 2
+    center_x = win_width / 2 - center_space / 2
+    center_y = win_height / 2 - card_size[1] / 2
     hand_played = game.hand_played.copy()
 
     card_x = center_x
@@ -118,12 +123,12 @@ def draw_hand_played(game, card_size):
 
 def update_card_space(x1, game, player_num, card_size):
     print(f'Player\'s length is {len(game.players[player_num].hand)}')
-    card_space = int((window_width - x1 * 2) / len(game.players[player_num].hand))
+    card_space = int((win_width - x1 * 2) / len(game.players[player_num].hand))
     return card_space
 
 
 def draw_opp(image, game, player_num):
-    global window_width, window_height, btn_h
+    global win_width, win_height, btn_h
     img_size = image.get_rect().size
     rotated_image = pygame.transform.rotate(image, 90)
     p1 = player_num
@@ -139,30 +144,30 @@ def draw_opp(image, game, player_num):
         txt_w, txt_h = text.get_rect().size
 
         if index == p1:
-            window.blit(text, (window_width // 2 - txt_w // 2, window_height - img_size[1] * 2 - txt_h - 10))
+            window.blit(text, (win_width // 2 - txt_w // 2, win_height - img_size[1] * 2 - txt_h - 10))
             text_color = white
             continue
         elif side == 0 and not (game.players[index].finish or game.players[index].quit):  # P2
-            x = window_width - img_size[1]
+            x = win_width - img_size[1]
             y = y1 = img_size[1]
             for card in game.players[index].hand:
                 draw(rotated_image, x, y)
-                y += (window_height - y1 - img_size[0] * 2) / len(game.players[index].hand)
-            window.blit(text, (x - txt_w - 10, window_height // 2 - txt_h // 2))
+                y += (win_height - y1 - img_size[0] * 2) / len(game.players[index].hand)
+            window.blit(text, (x - txt_w - 10, win_height // 2 - txt_h // 2))
         elif side == 1 and not (game.players[index].finish or game.players[index].quit):
             x = 0
             y = y1 = img_size[1]
             for card in game.players[index].hand:
                 draw(rotated_image, x, y)
-                y += (window_height - y1 - img_size[0] * 2) / len(game.players[index].hand)
-            window.blit(text, (img_size[1] + 10, window_height // 2 - txt_h // 2))
+                y += (win_height - y1 - img_size[0] * 2) / len(game.players[index].hand)
+            window.blit(text, (img_size[1] + 10, win_height // 2 - txt_h // 2))
         elif side == 2 and not (game.players[index].finish or game.players[index].quit):
             y = 0
             x = x1 = img_size[1]
             for card in game.players[index].hand:
                 draw(image, x, y)
-                x += (window_width - x1 - img_size[0] * 2) / len(game.players[index].hand)
-            window.blit(text, (window_width // 2 - txt_w // 2, img_size[1] + txt_h + 10))
+                x += (win_width - x1 - img_size[0] * 2) / len(game.players[index].hand)
+            window.blit(text, (win_width // 2 - txt_w // 2, img_size[1] + txt_h + 10))
         text_color = white
         side += 1
 
@@ -187,9 +192,9 @@ def draw(image, x, y):
 
 
 def resize_card(file):
-    global window_width, window_height
+    global win_width, win_height
     img_size = pygame.image.load(file).get_rect().size
-    if window_width == window_height:
+    if win_width == win_height:
         print("Window is symmetrical")
         img_size = (int(img_size[0] / (w * 0.0125)), int(img_size[1] / (h * 0.0125)))
     else:
@@ -210,8 +215,8 @@ def game_over_screen(game, window, player_num, lobby):
     print("Game over screen")
     touched = False
     pygame.font.init()
-    global window_width
-    global window_height
+    global win_width
+    global win_height
 
     font = pygame.font.SysFont("arial", 18)
     texts = []
@@ -221,10 +226,10 @@ def game_over_screen(game, window, player_num, lobby):
 
     txt_height = texts[0].get_height()
     txt_width = texts[0].get_width()
-    y1 = window_height // 3 - txt_height * 2
-    y2 = window_height // 3
-    y3 = window_height // 3 + txt_height * 2
-    y4 = window_height // 3 + txt_height * 4
+    y1 = win_height // 3 - txt_height * 2
+    y2 = win_height // 3
+    y3 = win_height // 3 + txt_height * 2
+    y4 = win_height // 3 + txt_height * 4
 
     while not touched:
         clock.tick(30)
@@ -241,13 +246,13 @@ def game_over_screen(game, window, player_num, lobby):
         window.fill(green)
         for index, player in enumerate(game.finished_players):
             if index == 0:
-                window.blit(texts[index], (window_width // 2 - txt_width // 2, y1))
+                window.blit(texts[index], (win_width // 2 - txt_width // 2, y1))
             if index == 1:
-                window.blit(texts[index], (window_width // 2 - txt_width // 2, y2))
+                window.blit(texts[index], (win_width // 2 - txt_width // 2, y2))
             if index == 2:
-                window.blit(texts[index], (window_width // 2 - txt_width // 2, y3))
+                window.blit(texts[index], (win_width // 2 - txt_width // 2, y3))
             if index == 3:
-                window.blit(texts[index], (window_width // 2 - txt_width // 2, y4))
+                window.blit(texts[index], (win_width // 2 - txt_width // 2, y4))
 
         pygame.display.update()
     print("Returning to lobby...")
@@ -278,8 +283,8 @@ def play_game(lobby, player_num):
 
     card_back = equalize_image('back.png', card_size[0], card_size[1])
     x = x1 = card_size[0]
-    y = window_height - card_size[1]
-    card_space = int((window_width - x1 * 2) / len(game.players[player_num].hand))
+    y = win_height - card_size[1]
+    card_space = int((win_width - x1 * 2) / len(game.players[player_num].hand))
     overlap_space = get_overlap(card_size[0], card_space)
     card_buttons = []
     for num, card in enumerate(hand):
@@ -290,8 +295,8 @@ def play_game(lobby, player_num):
         x += card_space
 
     global btn_w, btn_h
-    play_button = Button('Play', card_size[1], window_height - (card_size[1] * 2 + btn_h), red, btn_w, btn_h)
-    pass_button = Button('Pass', window_width - (card_size[1] + btn_w), window_height - (card_size[1] * 2 + btn_h), blue,
+    play_button = Button('Play', card_size[1], win_height - (card_size[1] * 2 + btn_h), red, btn_w, btn_h)
+    pass_button = Button('Pass', win_width - (card_size[1] + btn_w), win_height - (card_size[1] * 2 + btn_h), blue,
                          btn_w, btn_h)
     play_hand = []  # Played cards index
     finished = False
@@ -395,7 +400,7 @@ def play_game(lobby, player_num):
         # Display board
         draw_opp(card_back, game, player_num)
         x = x1 = card_size[0]
-        y = window_height - card_size[1]
+        y = win_height - card_size[1]
         if not finished:
             for num, card in enumerate(hand):  # Draw button selection box
                 if num == len(hand) - 1:  # Check if last card in hand
@@ -422,21 +427,22 @@ def play_game(lobby, player_num):
     return lobby
 # endregion
 
+
 # region Inside lobby
 def join_lobby(player_num, lobby):
     run = True
-    global window_width, window_height
+    global win_width, win_height
     print("Joined lobby")
 
     key = lobby.get_number()
     lobby = None
 
-    start_button = Button("Start", window_width - btn_w, window_height - btn_h, white, btn_w, btn_h)
-    ready_button = Button("Ready", window_width // 2 - btn_w // 2, window_height - btn_h, white, btn_w, btn_h)
-    back_button = Button("Back", 0, window_height - btn_h, white, btn_w, btn_h)
+    start_button = Button("Start", win_width - btn_w, win_height - btn_h, white, btn_w, btn_h)
+    ready_button = Button("Ready", win_width // 2 - btn_w // 2, win_height - btn_h, white, btn_w, btn_h)
+    back_button = Button("Back", 0, win_height - btn_h, white, btn_w, btn_h)
 
-    font = pygame.font.SysFont("arial", window_height // 15)
-    crown = pygame.image.load("crown.png")
+    font = pygame.font.SysFont("arial", win_height // 15)
+    crown_img = pygame.image.load(crown_file)
 
     print(f"You are player {player_num}")
 
@@ -453,15 +459,15 @@ def join_lobby(player_num, lobby):
         for player in lobby.players:
             if player is None: continue
             x = 60
-            y1 = window_height // 2
+            y1 = win_height // 2
             y = y1 * (0.25 * (player + 1))
-            text_x = window_width - font.render("Ready", 1, white).get_width() - 20
+            text_x = win_width - font.render("Ready", 1, white).get_width() - 20
 
             window.blit(font.render(f"Player {player}", 1, white), (x, y))
             if lobby.ready[player]:
                 window.blit(font.render("Ready", 1, white), (text_x, y))
             if player == lobby.get_host():
-                window.blit(crown, (0, y))
+                window.blit(crown_img, (0, y))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -545,11 +551,11 @@ def input_text(box, font, y):
 
 def create_menu():
     run = True
-    global window_width
-    global window_height
+    global win_width
+    global win_height
 
-    box_width = window_width - 40
-    box_height = window_height // 10
+    box_width = win_width - 40
+    box_height = win_height // 10
 
     font = pygame.font.SysFont("arial", box_height // 2)
     room_name = font.render('Name here', 1, white)
@@ -558,7 +564,7 @@ def create_menu():
     #  TODO Check these boxes later
     room_black_box = Button("", 20, 100, black, box_width, box_height)
     pass_black_box = Button("", 20, 300, black, box_width, box_height)
-    create_button = Button("Create", window_width // 2 - 75, window_height * 0.75, white, 150, 100)
+    create_button = Button("Create", win_width // 2 - 75, win_height * 0.75, white, 150, 100)
     room_text_y = 100 + box_height // 2 - room_name.get_height() // 2
     password_y = 300 + box_height // 2 - password.get_height() // 2
     name_text = font.render("Name:", 1, white)
@@ -574,8 +580,8 @@ def create_menu():
         room_black_box.draw(window)
         pass_black_box.draw(window)
         create_button.draw(window)
-        window.blit(name_text, (window_width // 2 - name_text.get_size()[0] // 2, room_black_box.rect.top - name_text.get_size()[1]))
-        window.blit(pass_text, (window_width // 2 - pass_text.get_size()[0] // 2, pass_black_box.rect.top - pass_text.get_size()[1]))
+        window.blit(name_text, (win_width // 2 - name_text.get_size()[0] // 2, room_black_box.rect.top - name_text.get_size()[1]))
+        window.blit(pass_text, (win_width // 2 - pass_text.get_size()[0] // 2, pass_black_box.rect.top - pass_text.get_size()[1]))
         window.blit(room_name, (40, room_text_y))
         window.blit(password, (40, password_y))
 
@@ -625,9 +631,9 @@ def create_menu():
 
 
 def display_lobbies(lobby, buttons, page, rpp):  # 6 Rooms per a page. Cut to 5 if other sizes don't work
-    global window_width, window_height
-    box_width = window_width - 40
-    box_height = window_height // 10
+    global win_width, win_height
+    box_width = win_width - 40
+    box_height = win_height // 10
     x = 20
     y = 20
 
@@ -645,7 +651,7 @@ def display_lobbies(lobby, buttons, page, rpp):  # 6 Rooms per a page. Cut to 5 
         name = font.render(lobby[room].get_name(), 1, white)
         window.blit(name, (x + 10, y + box_height // 2 - name.get_height() // 2))
 
-        join_button = JoinButton("Join", window_width - 130, y + 10, (105, 105, 105), 100, box_height - 20)
+        join_button = JoinButton("Join", win_width - 130, y + 10, (105, 105, 105), 100, box_height - 20)
         join_button.set_key(room)
         buttons.append(join_button)
         join_button.draw(window)
@@ -659,11 +665,11 @@ def display_lobbies(lobby, buttons, page, rpp):  # 6 Rooms per a page. Cut to 5 
 
 def enter_password(key):
     run = True
-    global window_width, window_height
-    rect = pygame.Rect(0, 0, window_width, window_height)
+    global win_width, win_height
+    rect = pygame.Rect(0, 0, win_width, win_height)
     color = (100,100,100,5)
 
-    black_box = Button("", 20, window_height // 2 - window_height // 10, black, window_width - 40, window_height // 10)
+    black_box = Button("", 20, win_height // 2 - win_height // 10, black, win_width - 40, win_height // 10)
     font = pygame.font.SysFont("arial", black_box.height // 2)
     password_prompt = font.render("Password:", 1, white)
     text_height = password_prompt.get_height()
@@ -694,11 +700,11 @@ def server_menu():  # Get a list of all available rooms by connecting to network
     run = True
     global n
 
-    create_button = Button("Create", window_width - btn_w, window_height - btn_h, white, btn_w, btn_h)
-    refresh_button = Button("Refresh", window_width // 2 - btn_w // 2, window_height - btn_h, white, btn_w, btn_h)
-    back_button = Button("Back", 0, window_height - btn_h, white, btn_w, btn_h)
-    next_button = Button("Next", window_width - btn_w, window_height - btn_h * 3 - 20, blue, btn_w, btn_h)
-    prev_button = Button("Prev", 0, window_height - btn_h * 3 - 20, blue, btn_w, btn_h)
+    create_button = Button("Create", win_width - btn_w, win_height - btn_h, white, btn_w, btn_h)
+    refresh_button = Button("Refresh", win_width // 2 - btn_w // 2, win_height - btn_h, white, btn_w, btn_h)
+    back_button = Button("Back", 0, win_height - btn_h, white, btn_w, btn_h)
+    next_button = Button("Next", win_width - btn_w, win_height - btn_h * 3 - 20, blue, btn_w, btn_h)
+    prev_button = Button("Prev", 0, win_height - btn_h * 3 - 20, blue, btn_w, btn_h)
 
     try:
         n = Network()
@@ -711,7 +717,7 @@ def server_menu():  # Get a list of all available rooms by connecting to network
 
     join_buttons = []
     page = 0
-    rpp = next_button.rect.top // ((window_height // 10) + 20)  # Rooms per page
+    rpp = next_button.rect.top // ((win_height // 10) + 20)  # Rooms per page
 
     font = pygame.font.SysFont('arial', btn_h // 4)
 
@@ -726,7 +732,7 @@ def server_menu():  # Get a list of all available rooms by connecting to network
             pages = font.render(f"{page}/{len(lobby) // rpp}", 1, white)
             next_button.draw(window)
             prev_button.draw(window)
-            window.blit(pages, (window_width // 2 - pages.get_rect().width // 2,
+            window.blit(pages, (win_width // 2 - pages.get_rect().width // 2,
                                 next_button.y + btn_h // 2 - pages.get_rect().height))
 
         display_lobbies(lobby, join_buttons, page, rpp)
@@ -840,17 +846,17 @@ def main_menu():
     print("Running Main Menu... \n")
 
     run = True
-    global window_width, window_height, btn_w, btn_h
+    global win_width, win_height, btn_w, btn_h
 
     window.fill(green)
-    sp_button = Button('Solo play', window_width // 2 - btn_w // 2, window_height // 2, (200, 200, 200), btn_w, btn_h)
-    server_button = Button('Servers', window_width // 2 - btn_w // 2, sp_button.rect.bottom + 10, (0, 0, 255), btn_w, btn_h)
-    help_button = Button('Help', window_width // 2 - btn_w // 2, server_button.rect.bottom + 10, (200, 200, 200), btn_w, btn_h)
+    sp_button = Button('Solo play', win_width // 2 - btn_w // 2, win_height // 2, (200, 200, 200), btn_w, btn_h)
+    server_button = Button('Servers', win_width // 2 - btn_w // 2, sp_button.rect.bottom + 10, (0, 0, 255), btn_w, btn_h)
+    help_button = Button('Help', win_width // 2 - btn_w // 2, server_button.rect.bottom + 10, (200, 200, 200), btn_w, btn_h)
     font = pygame.font.SysFont('arial', 10)
     coming_soon = font.render('Coming soon', 1, black)
 
-    logo = pygame.image.load('big_two_logo.png')
-    logo_size = logo.get_rect().size
+    logo_img = pygame.image.load(logo_file)
+    logo_size = logo_img.get_rect().size
 
     fail_connect = False
     server_font = pygame.font.SysFont('arial', btn_h // 4)
@@ -862,11 +868,11 @@ def main_menu():
 
         window.fill(green)
         sp_button.draw(window)
-        window.blit(coming_soon, (window_width // 2 - coming_soon.get_rect().size[0] // 2, sp_button.rect.bottom - 20))
+        window.blit(coming_soon, (win_width // 2 - coming_soon.get_rect().size[0] // 2, sp_button.rect.bottom - 20))
         server_button.draw(window)
         help_button.draw(window)
-        window.blit(coming_soon, (window_width // 2 - coming_soon.get_rect().size[0] // 2, help_button.rect.bottom - 20))
-        draw(logo, window_width // 2 - logo_size[0] // 2, 50)
+        window.blit(coming_soon, (win_width // 2 - coming_soon.get_rect().size[0] // 2, help_button.rect.bottom - 20))
+        draw(logo_img, win_width // 2 - logo_size[0] // 2, 50)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
